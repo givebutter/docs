@@ -1,0 +1,43 @@
+---
+title: "Giving Form"
+description: "The form element will embed a Givebutter form directly your page."
+---
+
+### Installation
+
+If you haven't already, [Install the Elements library](givebutter-elements/elements-install).
+
+Then, add the following HTML snippet on your page:
+
+```html HTML
+<div
+  givebutter-element="giving-form"
+  givebutter-campaign="YourCampaignCode"
+></div>
+```
+
+### Configuration
+
+You can configure how the button appears using the following attributes:
+
+| Attribute                | Description                                                                                          | Default |
+| ------------------------ | ---------------------------------------------------------------------------------------------------- | ------- |
+| givebutter-iframe-width  | How wide should the iframe be.                                                                       | 100%    |
+| givebutter-iframe-height | How high should the iFrame be to start. This will automatically be adjusted once the form is loaded. | 615px   |
+
+<iframe
+  src="https://demo.givebutter.com/elements/forms/DfO6Ax0dVMPkcWlA/donate/TREU2X?GBA_GB.element.type=giving-form&GBA_GB.element.url=https%3A%2F%2Fjs.givebutter.com%2Felements%2Fexamples%2Fform-donate-readme.io.html"
+  frameBorder={0}
+  scrolling="no"
+  seamless
+  allowpaymentrequest
+  name="givebutter"
+  id="iFrameResizer0"
+  style={{
+    width: "100%",
+    height: "934px",
+    maxWidth: "601px",
+    scrollMarginTop: "20px",
+    overflow: "hidden",
+  }}
+/>

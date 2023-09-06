@@ -1,0 +1,24 @@
+---
+title: "Dynamic Elements"
+description: "Customize & publish Elements quickly and visually through the Dashboard."
+---
+
+<Tip>
+    **Recommended**
+
+    Dynamic Elements allow you to easily create Elements and manage their configuration through the [Dashboard](https://dashboard.givebutter.com). Creating your Elements from the Dashboard will allow you to dynamically update your customizations without needing to update your site's code. This is the recommended method for using Elements.
+
+    **[Visit the Dashboard](https://dashboard.givebutter.com)** to create your first Element.
+
+</Tip>
+
+To use Dynamic Elements, simply add a short HTML snippet on your page containing the Element ID. This short snippet will be provided to you in the Dashboard upon creation.
+
+```html HTML
+<div givebutter-element-id="123"></div>
+// Replace 123 with your Element ID.
+```
+
+**Using multiple Givebutter accounts**
+
+Be sure to set the correct **accountId** during Installation. If the Element ID doesn't belong to the accountId in your installation script, you'll receive an error. If you need to use multiple accounts on the same page you can add the **givebutter-account-id** to each Dynamic Element HTML tag to specify which account to use.

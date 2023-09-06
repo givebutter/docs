@@ -1,0 +1,63 @@
+---
+title: "Button"
+---
+
+### Installation
+
+If you haven't already, [Install the Elements library](/docs/elements-install).
+
+Then, add the following HTML snippet on your page:
+
+```html HTML
+<div givebutter-element="button" givebutter-campaign="YourCampaignCode"></div>
+```
+
+### Attaching to an existing button
+
+The button elements supports several themes designed to match your websites design.
+
+`givebutter-theme="click-only"` will create a button out of any existing HTML element. This can be used on any HTML element, such as buttons, links or images, and will show a donation form when clicked!
+
+```html HTML
+<button
+  givebutter-element="button"
+  givebutter-campaign="YourCampaignCode"
+  givebutter-theme="click-only"
+>
+  Donate!
+</button>
+```
+
+There is also a `text-only` theme for dynamic elements that will keep your existing styles, but update the contents of the element with whatever label you pick in the dashboard. This allows you to add a dynamic button to your site that you can control through the Givebutter Dashboard.  
+When using the `text-only` theme only the campaign and label settings in the Dashboard will be used. (Color and other styling settings are not applied)
+
+```html HTML
+<button givebutter-element-id="1234" givebutter-theme="text-only">
+  Donate!
+</button>
+```
+
+### Configuration
+
+You can configure how the button appears using the following attributes:
+
+| Attribute                   | Description                                    | Default        | Type           |
+| --------------------------- | ---------------------------------------------- | -------------- | -------------- |
+| givebutter-label            | Text shown in the button                       | Donate         | String         |
+| givebutter-label-color      | Text & Icon Color                              | #FFFFFF        | Hex Color Code |
+| givebutter-background-color | Background color of the button                 | #FF8A00        | Hex Color Code |
+| givebutter-icon             | Icon to show in the button:'heart' or 'none'   | heart          | String         |
+| givebutter-drop-shadow      | Show a dropshadow under the button             | true           | Boolean        |
+| givebutter-border-radius    | Border Radius (Used to create rounded corners) | 100            | Number         |
+| givebutter-border-color     | Color of the border                            | (Empty string) | Hex Color Code |
+| givebutter-border-width     | Width of the border                            | 0              | Number         |
+
+```html HTML
+<span
+  givebutter-element="button"
+  givebutter-campaign="YourCampaignCode"
+  givebutter-label="Donate to this years campaign"
+></span>
+```
+
+[Givebutter Elements Example](https://js.givebutter.com/elements/examples/button-readme.io.html "js.givebutter.com")

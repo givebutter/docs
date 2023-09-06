@@ -1,0 +1,69 @@
+---
+title: "Events"
+sidebarTitle: "Overview"
+---
+
+### Table of Contents
+
+<CardGroup cols={4}>
+  <Card title="Overview" icon="file-magnifying-glass" href="#overview"></Card>
+  <Card title="beforeLoad" icon="loader" href="#before-load-event"></Card>
+  <Card title="load" icon="spinner-third" href="#load-event"></Card>
+  <Card title="ready" icon="check" href="#ready-event"></Card>
+</CardGroup>
+
+### Overview
+
+Events listeners allow you to take action when certain things occur.
+
+In order to listen for events, call the `addEventListener` method of the `window.Givebutter` object.
+
+The `window.Givebutter.addEventListener` function is available immediately after including the library. You do **not** need to wait for the [ready](#ready-event) event to fire.
+
+```java JavaScript
+window.Givebutter( 'addEventListener', eventName, function(givebutter) { // Handle event });
+```
+
+### Library Events
+
+#### beforeLoad
+
+The `beforeLoad` event occurs Immediately after the library is initialized, but before the page is finished loading.
+
+**Name:** `beforeLoad`  
+**Constant:** Givebutter.EVENT.BEFORE_LOAD  
+**Parameters:** `givebutter` (Givebutter elements library instance)
+
+```java JavaScript
+window.Givebutter( 'addEventListener', window.Givebutter.EVENT.BEFORE_LOAD, // use defined constant or 'beforeLoad' function(givebutter) { // Elements is ready and accessible via the givebutter variable (or window.Givebutter) // but the page may not have finished loading yet } );
+```
+
+#### load
+
+The `load` event occurs when the library is finished loading and the DOM is ready, but before the widgets are initialized.
+
+Some of the things you may want to do at this step include:
+
+- Dynamic configuration changes
+- Load additional themes
+- Over-ride or extend widget methods
+
+**Name:** `load`  
+**Constant:** Givebutter.EVENT.LOAD  
+**Parameters:** `givebutter` (Givebutter elements library instance)
+
+```java JavaScript
+window.Givebutter( 'addEventListener', window.Givebutter.EVENT.LOAD, // use defined constant or 'load' function(givebutter) { // Elements is ready and accessible via the givebutter variable (or window.Givebutter) // but findWidgets() has not been called yet } );
+```
+
+#### ready
+
+The `ready` event is a special type of event that is guaranteed to only be called once. Unlike the `load` event, the `ready` listener will be fired immediately if the Givebutter Elements library is already loaded. To use any other methods you'll need to wait for the `ready` event by attaching an event listener as shown in the example below.
+
+**Name:** `ready`  
+**Constant:** Givebutter.EVENT.READY  
+**Parameters:** `givebutter` (Givebutter elements library instance)
+
+```java JavaScript
+window.Givebutter( function(givebutter) { // Elements is ready and accessible via the givebutter variable (or window.Givebutter) // Themes and widgets may still be loading } ); `
+```

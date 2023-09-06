@@ -1,0 +1,99 @@
+---
+title: "Donation Events"
+---
+
+### Table of Contents
+
+<CardGroup cols={2}>
+  <Card title="Overview" icon="file-magnifying-glass" href="#overview"></Card>
+  <Card
+    title="Donation Object"
+    icon="hand-holding-medical"
+    href="#donation-object"
+  ></Card>
+</CardGroup>
+
+### Donation events
+
+<CardGroup cols={3}>
+  <Card title="Started" icon="play" href="#donation-started-event"></Card>
+  <Card title="Paying" icon="money-bill" href="#donation-paying-event"></Card>
+  <Card title="Complete" icon="check" href="#donation-complete-event"></Card>
+</CardGroup>
+
+### Overview
+
+Donation events are fired at various steps during the donation flow.
+
+This allows you to integrate donation events directly into your existing tracking code.
+
+You can also use these events to update the page or show a custom thank you message once a donation is complete.
+
+### Creating an Event Listener
+
+You can attach an event listener using the `window.Givebutter.addEventListener` function. This function is available immediately after include the Loader. You do not need to wait for `EVENT.READY` to add listeners;
+
+```java JavaScript
+window.Givebutter(
+    'addEventListener',
+    window.Givebutter.EVENT.DONATION.STARTED, // use defined constant or raw code
+    function(donationObj) {
+	      // Track the donation
+    }
+);
+```
+
+### Donation Object
+
+Donations event callbacks receive a donation object as the only parameter.
+
+```java javaDonationEventObject
+{
+  givebutter: true, // Always set to true
+  dataFormat: 1.0, // Format version
+  event: 'donation.started', // Event Name
+  total: 0, // Total Donation
+  frequency: 'once', // Payment Frequency,
+  method: 'card', // Payment Method
+  currency: 'USD', // Currency
+  campaign: { // Campaign Data
+      code: 'my-campaign', // Campaign Code
+      title: 'My Campaign', // Campaign Title
+      url: 'https://givebutter.com/my-campaign/'  // Campaign URL,
+  },
+  sessionId: // Unique Session ID
+}
+```
+
+### Donation Started Event
+
+**Code:** `donation.started`  
+**Constant:** Givebutter.EVENT.DONATION.STARTED
+
+**Description:**  
+The `donation.started` event occurs when a user completes the first step of the donation flow.
+
+### Donation Paying Event
+
+**Code:** `donation.paying`  
+**Constant:** Givebutter.EVENT.DONATION.PAYING
+
+**Description:**  
+The `donation.paying` event occurs when a user is on the final step of the donation flow and is being asked for payment details.
+
+### Donation Complete Event
+
+**Code:** `donation.complete`  
+**Constant:** Givebutter.EVENT.DONATION.COMPLETE
+
+**Description:**  
+The `donation.complete` event occurs when a user is finished the donation flow.
+
+<Warning>
+  **Verifying a Donation**
+
+The `donation.complete` event is fired inside the browser and could be faked by a malicious user.
+
+If you need to verify a donation you can use the `donationObj.sessionId` to confirm the donation is finished and see what items were purchased. See the API documentation for more details.
+
+</Warning>

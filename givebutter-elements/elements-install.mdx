@@ -1,0 +1,91 @@
+---
+title: "Getting Started"
+description: "The power and security of Givebutter on your own website – embed donate buttons, bubbles, forms, and more!"
+---
+
+<Warning>
+    **Elements is now Widgets**
+
+    The docs below are for backwards compatability purposes only. New users should see the Widgets docs. Upgrading to Widgets is optional, all your existing Elements will still work. We reccomend upgrading to widgets for the best performance and to access future updates.
+
+</Warning>
+
+### Installing the library
+
+Installing Givebutter Elements is fast and easy. Simply add the following code snippet inside the `<head></head>` tag of your website and we'll take care of the rest for you. We recommend including the code snippet on every page of your site. To retrieve your installation snippet, visit your Dashboard.
+
+<Note>
+    **Installation Code**
+
+    [Visit your Dashboard](https://dashboard.givebutter.com) to get your installation code.
+
+</Note>
+
+```html HTML
+<!-- Givebutter Elements -->
+
+<script>
+  window.Givebutter =
+    window.Givebutter ||
+    function () {
+      (Givebutter.q = Givebutter.q || []).push(arguments);
+    };
+  Givebutter.l = +new Date();
+  window.Givebutter("setOptions", {
+    accountId: "{YOUR_ACCOUNT_ID}", // Visit your Dashboard to find your Account ID.
+  });
+</script>
+
+<script async src="https://js.givebutter.com/elements/latest.js"></script>
+
+<!-- End Givebutter Elements -->
+```
+
+### Creating Elements
+
+<Tip>
+    **[Recommended\] Dynamic Elements**
+
+    Dynamic Elements allow you to easily create Elements and manage their configuration through the [Dashboard](https://dashboard.givebutter.com). Creating your Elements from the Dashboard will allow you to dynamically update your customizations without needing to update your site's code. This is the recommended method for using Elements.
+
+    [Visit the Dashboard](https://dashboard.givebutter.com)** to create your first Element.
+
+</Tip>
+
+<Warning>
+    **\[Advanced\] Coded Elements**
+
+    If you'd like full control over Elements, you can create them directly with our library. Visit the Coded Elements section to learn how.
+
+</Warning>
+
+### Analytics
+
+Givebutter Elements can automatically store attribution data for you and pass it along when a transaction or donation occurs. This data will be available for viewing in your dashboard and can be downloaded for further analysis. We even have an integration with Google Analytics. [Read more about Analytics.](/docs/elements-analytics)
+
+### Events
+
+The Elements library contains two magic functions that you can use right away while you are waiting for the script to load:
+
+**`window.Givebutter('setOptions', {option: value} )`** \- Used to set configuration options.
+
+**`window.Givebutter('addEventListener', eventName, function() { } )`** \- Registers an event listener. See [event listeners](/givebutter-elements/events/overview) for available events.
+
+<Warning>
+    **Asynchronous script loading**
+
+    The Givebutter elements library is loaded using the `async=true` attribute. This allows the page to finish loading while the script is being downloaded and ensures the best possible user experience.
+
+    While the script is being loaded only the `window.Givebutter.setOptions()` and `window.Givebutter.addEventListener()` functions are available.
+
+    If you'd like to use any other function you'll need to wait for the 'ready' event. (See [Ready Events](/givebutter-elements/events/overview#ready-event) for more info).
+
+    You can also check if the script is still loading using the `window.Givebutter.isLoading` boolean.
+
+</Warning>
+
+```java Example
+window.Givebutter(function(givebutter) {
+	// Elements is ready and accessible via the givebutter variable (or window.Givebutter)
+});
+```

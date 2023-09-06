@@ -1,0 +1,71 @@
+---
+title: "Bubble"
+description: "The Bubble Element lets you quickly and easily add a donate button to your site without having to figure out where to put it. By default, the Bubble will float in the bottom right-hand corner of your page."
+---
+
+### Installation
+
+If you haven't already, [Install the Elements library](/givebutter-elements/elements-install).
+
+Then, check the `window.Givebutter.setOptions()` call in the loader script and make sure `bubble` is set to `true`
+
+```java JavaScript
+<script>
+
+  // Loader Script
+
+window.Givebutter('setOptions', {
+    accountId: "{YOUR_ACCOUNT_ID}", // Replace with your account ID
+    campaign: "{YOUR_CAMPAIGN_CODE}",
+    bubble: true,  // Add this if it's missing
+});
+</script>
+```
+
+This will load the default bubble from your Account's Element settings.
+
+### Configuration
+
+To configure the bubble directly, change `bubble: true,` to an `object` instead of a `boolean`
+
+```java JavaScript
+<script>
+
+  // Loader Script
+
+window.Givebutter('setOptions', {
+    accountId: "{YOUR_ACCOUNT_ID}", // Replace with your account ID
+    campaign: "{YOUR_CAMPAIGN_CODE}",
+    bubble: {  // Configuration Object
+      visible: true,
+      label: "Donate",
+      hideLabel: false,
+      backgroundColor: "#FF8A00",
+      location: 'bottom-right', // top-left, middle-left, bottom-left, top-right, middle-right, bottom-right
+      verticalOffset: 25, // offset from the top or bottom edge (must be in pixels)
+      horizontalOffset: 50, // offset from the left or right edge (must be in pixels)
+      // Transition effects
+      buttonTransformShow: 'scale(1)',
+      buttonTransformHide: 'scale(0)',
+
+      modal: {
+        fullscreen: false, // false to show as a corner window
+        position: 'right', // left, center, right
+      },
+    },
+});
+</script>
+```
+
+<iframe
+  height="300px"
+  width="100%"
+  href="https://js.givebutter.com/elements/examples/bubble-readme.io.html"
+  border="none"
+  src="https://js.givebutter.com/elements/examples/bubble-readme.io.html"
+  style={{ border: "none", display: "flex", margin: "auto" }}
+>
+  &lt;a target="_self"
+  href="https://js.givebutter.com/elements/examples/bubble-readme.io.html"
+  title="js.givebutter.com" &gt; Givebutter Elements Example &lt;/a&gt;
+</iframe>

@@ -1,0 +1,205 @@
+---
+title: "Analytics"
+description: "Store & track attribution data so you know exactly where a donation originated."
+---
+
+Givebutter Elements can automatically store attribution data for you and pass it along when a transaction or donation occurs within an Element. This gives you the tools you need to track where your donations originated.
+
+### UTM & Query Parameters
+
+The following query string parameters are automatically tracked when someone visits a page with an Element installed on it:
+
+- utm_source
+- utm_medium
+- utm_campaign
+- utm_term
+- utm_content
+- gclid (Google click ID)
+- gclsrc (Google Ads)
+- dclid (DoubleClick click ID)
+- fbclid (Facebook click ID)
+
+### Custom URL Parameters
+
+If you'd like a bit more control over your data, or have additional custom attributes, you can add custom attribution data using query string parameters on your URL. Anything prefixed with `gba_` (Givebutter Analytics) will automatically be stored as attribution data.
+
+For example, if you want to track a social media post using `fbPostA` as the `source`, add `?gba_source=fbPostA` to the end of your donation URL:
+
+> `https://givebutter.com/{myCampaignUrl}?gba_source=fbPostA`
+
+This will automatically store the attribution data as `source=fbPostA` on the transaction and allow you to see how many transactions came from that Facebook post.
+
+### Setting data using JavaScript
+
+You can set attribution data directly using JavaScript. This allows you to control when and how data is set, as well as add custom attribution data to your transactions based on page events or other business logic.
+
+JavaScript
+
+`window.Givebutter('analytics.set', 'source', 'fbPostA'); `
+
+### Google Analytics Integration
+
+If you are currently using Google Analytics on your site, we will automatically call `ga.set()` with the attribution data for you.
+
+### Expiration
+
+By default, attribution data is stored for 30 days in the visitor's browser. You can adjust this by setting the `analytics.maxAge` option.
+
+```java JavaScript
+let timeInMinutes = 60 * 24 * 30; // 30 days
+
+window.Givebutter('setOptions', 'analytics', 'maxAge', timeInMinutes);
+```
+
+<Info>
+  Setting a key will extend the expire time for the key by the current `maxAge`.
+  Changing the `maxAge` option will not affect keys that have already been set.
+</Info>
+
+You can find out the expire time for a key with the `givebutter.analytics.getExpiresAt(key)` function.
+
+```java JavaScript
+window.Givebutter(function(givebutter) {
+   console.log(givebutter.analytics.getExpiresAt('source');
+});
+```
+
+You can also find out how long you have until the key expires with `givebutter.analytics.getExpiresIn(key)`.
+
+```java JavaScript
+
+`window.Givebutter(function(givebutter) {
+   console.log(givebutter.analytics.getExpiresIn('source');
+});
+```
+
+### Input Field Linking
+
+You can attach analytics data to a form field. This can be used to either export data using hidden input fields and/or collect data by attaching it to existing form elements on your page.
+
+If the element does not have a 'value' property then one will be created automatically.
+
+When the input's `value` is changed, the analytics data is automatically updated. And similarly, if the analytics data changes, the input's `value` will be updated.
+
+Note: `input` events on the element must be sent in order to detect value changes. If you are using a custom input field that does not send `input` events, automatic updates will not occur.
+
+```html HTML
+<input
+  type="hidden"
+  name="myField"
+  givebutter-element="analytics-input"
+  givebutter-key="source"
+/>
+```
+
+It's possible to export all the analytics data into a single field using the '\*' key.
+
+By default it's exported as a query string that can be appended to a URL, but you can also get JSON formatted data using the `givebutter-format='json'` attribute.
+
+```html HTML
+<input
+  type="hidden"
+  name="myField"
+  givebutter-element="analytics-input"
+  givebutter-key="*"
+  givebutter-format="json"
+/>
+```
+
+### Scoping your data
+
+Every `accountId` and subdomain has it's own analytics data, but sometimes that's not enough. Sometimes you want your attribution data to be grouped separately in different areas of your site. For example, you may want a certain campaign or section of your site to not affect the analytics data for other sections. It's possible to do this by setting the `analytics.scope` option in your givebutter elements loader script.
+
+The following example will store the data in the `separateSection` scope.
+
+JavaScript
+
+`window.Givebutter('setOptions','analytics','scope','separateSection'); `
+
+<Warning>
+
+    **Scope is only settable before the `load` event is fired**
+
+    This option must be set when the page is loading. Setting it after the page has loaded is not supported and will not work correctly.
+
+</Warning>
+
+You must add it to the loader script as shown in the example below, before the elements.js file is included, to ensure the scope works correctly.
+
+```html HTML
+<!-- Givebutter Elements -->
+<script>
+  window.Givebutter=window.Givebutter||function(){(Givebutter.q=Givebutter.q||[]).push(arguments)};Givebutter.l=+new Date;
+  window.Givebutter('setOptions',
+  {
+      "accountId": // Your Givebutter accountID
+  });
+  window.Givebutter('setOptions','analytics','scope','separateSection');
+</script>
+<script async src="https://js.givebutter.com/elements/latest.js"></script>
+<!-- End Givebutter Elements -->
+```
+
+### Opt In / Opt Out (GDPR)
+
+If your organization operates in Europe or other areas that require users to explicitly opt-in to data tracking, you can enable in the config options.
+
+```javaJavaScript
+window.Givebutter('setOptions', 'analytics', 'requireOptIn', true);
+```
+
+When a user clicks your button to "accept cookies", you'll need to fire the following JS function
+
+```java JavaScript
+window.Givebutter('analytics.optIn');
+```
+
+Alternatively, you can leave `requireOptIn` set to false and still let the users to optOut to disable tracking:
+
+```java JavaScript
+window.Givebutter('analytics.optOut');
+```
+
+If you want to delete all the existing tracking data when a user Opts-out, you must explicitly do so:
+
+```java JavaScript
+window.Givebutter('analytics.deleteAll');
+```
+
+<Warning>
+
+    **requireOptIn & optOut prevents the data from being stored between page loads**
+
+    Any data passed into the current page will still be reported in your donations correctly.
+
+    Once the user leaves the page any attribution data will be lost.
+
+</Warning>
+
+### Security & Limitations
+
+**Keys** are limited to 32 characters in length.
+
+**Values** are limited to 100 characters in length.
+
+You may store up to 12 **Keys** per transaction. After the first 12 keys the rest will be silently discard.
+
+These limits are only applied when a transaction occurs and do not affect the data stored in the browser.
+
+Analytics data is stored using [window.localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) instead of cookies.
+
+Using `window.localStorage` ensures the data is only transmitted when necessary, instead of attaching it to every request made by the browser to your site like traditional cookies. This helps keep your site as fast & secure as possible.
+
+`window.localStorage` is stored separately by the browser for every origin (domain name) that is accessed, and is never accessible to other domain names.
+
+<Warning>
+
+    **Cross-Origin restrictions also apply to subdomains**
+
+    This means `http://www.MySite.com` can not see data from `http://MySite.com`.
+
+    In order to ensure your tracking data is as accurate as possible, make sure your site is only accessible through a single domain. (Either by redirecting MySite.com to [www.MySite.com](http://www.MySite.com) or vise-versa)
+
+    Otherwise, attribution data set through a link to `http://MySite.com?gba_source=firstVisit` will not be visible if the user returns to your site later using the `http://www.MySite.com/`variation.
+
+</Warning>

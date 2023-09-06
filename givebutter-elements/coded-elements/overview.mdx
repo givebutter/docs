@@ -1,0 +1,104 @@
+---
+title: "Coded Elements"
+sidebarTitle: "Overview"
+description: "Advanced usage and fine-grained control."
+---
+
+<Warning>
+    **Advanced Usage**
+
+    If you're new to Elements, we recommend using [Dynamic Elements](/givebutter-elements/elements-dynamic-elements) through the Givebutter Dashboard.
+
+</Warning>
+
+### Creating elements using HTML
+
+Once you have the Elements library installed on your page, you can add elements directly to your page using HTML tags & attributes.
+
+To create an Element using HTML, either create a new tag, or add the `givebutter-element` attribute to any existing tag (we recommend a `DIV` or `SPAN`, but any tag will work)
+
+```html HTML
+<div givebutter-element="button" givebutter-campaign="Cmp1"></div>
+```
+
+Any attribute prefixed with `givebutter-` will automatically be used as an option when creating an element. [kebab-case-options](https://en.wikipedia.org/wiki/Letter%5Fcase#Kebab%5Fcase) will be converted to [camelCaseOptions](https://en.wikipedia.org/wiki/Letter%5Fcase#Camel%5Fcase) automatically.
+
+### Creating Elements using JavaScript
+
+You can also create an Element using JavaScript. This can only be done _after_ the onReady event has fired.
+
+```java JavaScript
+window.Givebutter(function(givebutter) { // onReady event listener
+    // Find or create an existing  html element
+    let container = document.getElementById('element-placeholder');
+    givebutter.createElement(
+        container,  // HtmlElement to replace
+        "bubble", // Element type
+        { // Element Options
+           campaign: 'Cmp1,
+           label: 'Donate'
+        }
+    );
+});
+```
+
+<Warning>
+  Changing Element options (using JavaScript) after an element has been created
+  is not officially supported. It's recommended to delete the element and
+  recreate it to ensure your options take effect. If you have a situation where
+  deleting and recreating an element is not feasible, please contact support and
+  we can work with you to find a solution.
+</Warning>
+
+### Global Options
+
+Global options apply to all elements on the page created _after_ the option has been set.
+
+```java JavaScript
+// Single Option
+Givebutter('setOptions', key, value);
+
+// Multiple options (Shallow merge)
+Givebutter('setOptions', {key: value});
+```
+
+| Name     | Description                                                                                                      | Default |
+| -------- | ---------------------------------------------------------------------------------------------------------------- | ------- |
+| campaign | Default campaign code                                                                                            | null    |
+| bubble   | Boolean, Element ID or options object (see [Bubble](/givebutter-elements/coded-elements/elements) for more info) | true    |
+
+<Warning>
+  **Shallow Copy** Options are set using `Object.assign`. This only create a
+  [shallow
+  copy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/assign#warning%5Ffor%5Fdeep%5Fclone)
+  of objects. if they contain nested settings the nested objects will be
+  replaced and not merged. (For instance, when using the `bubble` settings
+  object to configure it directly)
+</Warning>
+
+### Example:
+
+```java JavaScript
+Givebutter('setOptions', 'bubble', {'campaign': 'CMP1', 'label': 'Donate Now!' });
+// options.bubble =  {'campaign': 'CMP1', 'label': 'Donate Now!' }
+
+Givebutter('setOptions', 'bubble', {'visible': false} );
+// options.bubble =  {'visible': false }
+```
+
+If you need to set nested options, you can specific multiple keys. The last parameter is always the value.
+
+```java JavaScript
+Givebutter('setOptions', 'bubble', {'campaign': 'CMP1', 'label': 'Donate Now!' });
+// options.bubble =  {'campaign': 'CMP1', 'label': 'Donate Now!' }
+
+Givebutter('setOptions', 'bubble', 'visible', 'false');
+// options.bubble =  {'campaign': 'CMP1', 'label': 'Donate Now!', 'visible': false }
+```
+
+Multiple keys used to set `options.analytics.googleAnalytics.enabled = false`
+
+```javaJavaScript
+// Multiple keys
+Givebutter('setOptions', 'analytics', 'googleAnalytics', 'enabled', false);
+```
