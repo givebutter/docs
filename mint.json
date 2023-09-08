@@ -85,6 +85,61 @@
             "api-reference/introduction/errors",
             "api-reference/introduction/pagination"
           ]
+        },
+        {
+          "group": "Campaigns",
+          "pages": [
+            "api-reference/campaigns/campaigns",
+            "api-reference/campaigns/campaigns-object"
+          ]
+        },
+        {
+          "group": "Campaign Members",
+          "pages": [
+            "api-reference/introduction/overview"
+          ]
+        },
+        {
+          "group": "Campaign Teams",
+          "pages": [
+            "api-reference/introduction/overview"
+          ]
+        },
+        {
+          "group": "Contacts",
+          "pages": [
+            "api-reference/introduction/overview"
+          ]
+        },
+        {
+          "group": "Tickets",
+          "pages": [
+            "api-reference/introduction/overview"
+          ]
+        },
+        {
+          "group": "Transactions",
+          "pages": [
+            "api-reference/introduction/overview"
+          ]
+        },
+        {
+          "group": "Payouts",
+          "pages": [
+            "api-reference/introduction/overview"
+          ]
+        },
+        {
+          "group": "Plans",
+          "pages": [
+            "api-reference/introduction/overview"
+          ]
+        },
+        {
+          "group": "Funds",
+          "pages": [
+            "api-reference/introduction/overview"
+          ]
         }
       ]
     }

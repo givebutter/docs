@@ -1,0 +1,26 @@
+---
+title: "The Campaigns Object"
+---
+
+
+
+| Attribute     | Description                                                                                       |                  
+| ------------- | ------------------------------------------------------------------------------------------------- |
+| id            | The campaign ID.                                                                                  |
+| type          | The type of the campaign. Possible values: general, collect, fundraise, event.                    |
+| status        | The status of the campaign. Possible values: active, inactive, unpublished.                       |
+| title         | The title of the campaign.                                                                        |
+| subtitle      | The subtitle of the campaign.                                                                     |
+| description   | The HTML content displayed as the description of the campaign.                                    |
+| slug          | The slug to be used for this campaign. Must be unique across Givebutter.                          |
+| raised        | The total amount this campaign has raised.                                                        |
+| goal          | The campaign goal.                                                                                |
+| donors        | The number of donors who gave to this campaign.                                                   |
+| end_at        | A UTC datetime string indicating when the campaign ends.                                          |
+| url           | The full URL of this campaign.                                                                    |
+| currency      | The currency of this campaign (currently only USD is supported).                                  |
+| cover         | An object representing the cover photo / banner of this campaign.                                 |
+| created_at    | A UTC datetime string indicating when the campaign was created.                                   |
+| updated_at    | A UTC datetime string indicating when the campaign was last updated.                              |
+| meta          | An object representing the meta tags of this campaign (includes title, description, and image).   |
+| account_id    | The ID for the account that owns this campaign.                                                   |
