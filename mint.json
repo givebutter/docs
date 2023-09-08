@@ -26,7 +26,7 @@
   ],
   "tabs": [
     {
-      "name": "API Reference",
+      "name": "Givebutter API Reference",
       "url": "api-reference"
     },
     {
@@ -70,6 +70,20 @@
           "pages": [
             "givebutter-elements/events/overview",
             "givebutter-elements/events/elements-donation-events"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Givebutter API Reference",
+      "pages": [
+        {
+          "group": "Introduction",
+          "pages": [
+            "api-reference/introduction/overview",
+            "api-reference/introduction/authentication",
+            "api-reference/introduction/errors",
+            "api-reference/introduction/pagination"
           ]
         }
       ]
