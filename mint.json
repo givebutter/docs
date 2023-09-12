@@ -93,6 +93,16 @@
           ]
         },
         {
+          "group": "Campaigns",
+          "pages": [
+            "api-reference/campaigns/retrieve-a-list-of-campaigns",
+            "api-reference/campaigns/create-a-new-campaign",
+            "api-reference/campaigns/retrieve-a-campaign",
+            "api-reference/campaigns/update-an-existing-campaign",
+            "api-reference/campaigns/delete-an-existing-campaign"
+          ]
+        },
+        {
           "group": "Campaign Members",
           "pages": [
             "api-reference/campaign-members/retrieve-a-list-of-campaign-members",
@@ -109,24 +119,14 @@
           ]
         },
         {
-          "group": "Campaigns",
-          "pages": [
-            "api-reference/campaigns/retrieve-a-list-of-campaigns",
-            "api-reference/campaigns/create-a-new-campaign",
-            "api-reference/campaigns/retrieve-a-campaign",
-            "api-reference/campaigns/update-an-existing-campaign",
-            "api-reference/campaigns/delete-an-existing-campaign"
-          ]
-        },
-        {
           "group": "Contacts",
           "pages": [
-            "api-reference/contacts/restore-unarchive-a-contact",
-            "api-reference/contacts/return-a-list-of-api-reference/contacts",
+            "api-reference/contacts/return-a-list-of-contacts",
             "api-reference/contacts/create-a-contact-and-return-it",
             "api-reference/contacts/return-a-contact",
             "api-reference/contacts/update-a-contact-and-return-it",
-            "api-reference/contacts/archive-a-contact"
+            "api-reference/contacts/archive-a-contact",
+            "api-reference/contacts/restore-unarchive-a-contact"
           ]
         },
         {
