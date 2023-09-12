@@ -87,58 +87,94 @@
           ]
         },
         {
-          "group": "Campaigns",
+          "group": "Account",
           "pages": [
-            "api-reference/campaigns/campaigns",
-            "api-reference/campaigns/campaigns-object"
+            "api-reference/account/get-v1account"
           ]
         },
         {
           "group": "Campaign Members",
           "pages": [
-            "api-reference/introduction/overview"
+            "api-reference/campaign-members/retrieve-a-list-of-campaign-members",
+            "api-reference/campaign-members/retrieve-a-campaign-member",
+            "api-reference/campaign-members/delete-an-existing-campaign-member"
           ]
         },
         {
           "group": "Campaign Teams",
           "pages": [
-            "api-reference/introduction/overview"
+            "api-reference/campaign-teams/retrieve-a-list-of-campaign-teams",
+            "api-reference/campaign-teams/retrieve-a-campaign-team",
+            "api-reference/campaign-teams/delete-an-existing-campaign-team"
+          ]
+        },
+        {
+          "group": "Campaigns",
+          "pages": [
+            "api-reference/campaigns/retrieve-a-list-of-campaigns",
+            "api-reference/campaigns/create-a-new-campaign",
+            "api-reference/campaigns/retrieve-a-campaign",
+            "api-reference/campaigns/update-an-existing-campaign",
+            "api-reference/campaigns/delete-an-existing-campaign"
           ]
         },
         {
           "group": "Contacts",
           "pages": [
-            "api-reference/introduction/overview"
-          ]
-        },
-        {
-          "group": "Tickets",
-          "pages": [
-            "api-reference/introduction/overview"
-          ]
-        },
-        {
-          "group": "Transactions",
-          "pages": [
-            "api-reference/introduction/overview"
-          ]
-        },
-        {
-          "group": "Payouts",
-          "pages": [
-            "api-reference/introduction/overview"
-          ]
-        },
-        {
-          "group": "Plans",
-          "pages": [
-            "api-reference/introduction/overview"
+            "api-reference/contacts/restore-unarchive-a-contact",
+            "api-reference/contacts/return-a-list-of-api-reference/contacts",
+            "api-reference/contacts/create-a-contact-and-return-it",
+            "api-reference/contacts/return-a-contact",
+            "api-reference/contacts/update-a-contact-and-return-it",
+            "api-reference/contacts/archive-a-contact"
           ]
         },
         {
           "group": "Funds",
           "pages": [
-            "api-reference/introduction/overview"
+            "api-reference/funds/retrieve-a-list-of-fund-resources",
+            "api-reference/funds/create-a-new-fund-resource",
+            "api-reference/funds/retrieve-a-fund-resource",
+            "api-reference/funds/update-the-fund-resource",
+            "api-reference/funds/delete-the-fund-resource"
+          ]
+        },
+        {
+          "group": "Payouts",
+          "pages": [
+            "api-reference/payouts/retrieve-a-list-of-payouts",
+            "api-reference/payouts/retrieve-a-payout"
+          ]
+        },
+        {
+          "group": "Recurring Plans",
+          "pages": [
+            "api-reference/recurring-plans/retrieve-a-list-of-recurring-plans",
+            "api-reference/recurring-plans/retrieve-a-recurring-plan"
+          ]
+        },
+        {
+          "group": "Tickets",
+          "pages": [
+            "api-reference/tickets/retrieve-a-list-of-tickets",
+            "api-reference/tickets/retrieve-a-ticket"
+          ]
+        },
+        {
+          "group": "Transactions",
+          "pages": [
+            "api-reference/transactions/retrieve-a-list-of-transactions",
+            "api-reference/transactions/create-a-transaction-from-an-external-source",
+            "api-reference/transactions/retrieve-a-transaction"
+          ]
+        },
+        {
+          "group": "Webhooks",
+          "pages": [
+            "api-reference/webhooks/retrieve-a-list-of-webhooks",
+            "api-reference/webhooks/create-a-new-webhook",
+            "api-reference/webhooks/retrieve-a-webhook",
+            "api-reference/webhooks/delete-a-webhook"
           ]
         }
       ]
@@ -149,5 +185,12 @@
     "linkedin": "https://www.linkedin.com/company/givebutter/",
     "facebook": "https://www.facebook.com/givebutter",
     "instagram": "https://www.instagram.com/givebutter/"
-  }
+  },
+  "api": {
+    "baseUrl": "https://api.givebutter.com",
+    "auth": {
+      "method": "bearer"
+    }
+  },
+  "openapi": "openapi.yaml"
 }
