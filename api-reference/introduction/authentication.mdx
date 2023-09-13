@@ -1,0 +1,11 @@
+---
+title: "Authentication"
+---
+
+The Givebutter API uses API Keys to authenticate and perform requests. To authenticate requests, provide your API Key as the Bearer header:
+
+```bash
+Authorization: Bearer {{ your_api_key }}
+```
+
+All API requests must be made over HTTPS. Unencrypted calls over HTTP are not supported and will fail.
